@@ -1,19 +1,11 @@
 from tkinter import *
 import qrcode
 from tkinter import messagebox
-import os
+#导入库，没有请安装或使用exe版
 
 
-print(''' 
-            qqqq     r      r           cccc         ooooo                d    eeeeeee
-           q    q     r    r          c             o       o              d   e       e   
-           q    q     r rr          c             o           o            d   e eeeeeeee 
-             q qq     r             c             o           o        d d d   e      
-                q     r               c             o        o      d      d    ee                
-                q     r                 ccccc         ooooo           d  d d      eeeeeee        
-          
-         ''')
-class Application(Frame):
+
+class Application(Frame):                      #面向对象编写图形化界面
     def __init__(self,master = None):
         super().__init__(master)
         self.master = master
@@ -22,7 +14,7 @@ class Application(Frame):
     def createWidget(self):
         self.label01 = Label(self,text = "你想要创建的内容：")
         self.label01.pack()
-        v1 = StringVar()
+        v1 = StringVar()                                            #创建输入的文本框
         self.entry01 = Entry(self,textvariable=v1)
         self.entry01.pack()
         v1.set("")
@@ -34,19 +26,19 @@ class Application(Frame):
         self.entry02.pack()
         v1.set("")
 
-        self.btn01 = Button(self,text = "生成",command=self.login).pack()
+        self.btn01 = Button(self,text = "生成",command=self.login).pack()             #创建生成按钮
 
 
     def login(self):
         img = qrcode.make(self.entry01.get())
-        img.save(self.entry02.get()+".png")
+        img.save(self.entry02.get()+".png")                                 #当按下按钮后生成二维码并保存
         print("生成内容："+self.entry01.get())
         print("文件名:"+self.entry02.get())
         messagebox.showinfo("二维码生成器","生成可能会出现延迟，请稍等")
 
 
 root = Tk()
-root.geometry("400x200+200+300")
+root.geometry("400x200+200+300")                                               #创建文本框并运行Application
 root.title("二维码生成器")
 app = Application(master = root)
 
