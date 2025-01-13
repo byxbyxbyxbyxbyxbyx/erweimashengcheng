@@ -1,2 +1,2 @@
-# erweimashengcheng
+# 二维码生成器
 二维码生成器
